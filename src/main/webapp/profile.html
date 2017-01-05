@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+    <title>Insert title here</title>
+</head>
+<body>
+<ol class="breadcrumb" style="margin-bottom:0px;width:1170px;margin-left:23px;">
+	<li><a href="index.html" target="_parent">Home</a></li>
+	<li class="active">profile</li>
+</ol>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="width:90%;margin:0 auto;margin-top:20px;">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Basic Information
+        </a>
+        <button class="btn btn-default" onclick="editBasicInfo()" style="position:relative;right:40px;bottom:5px;float:right;"><i class="glyphicon glyphicon-pencil"></i></button>
+      </h4>
+      
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body" style="width:90%;margin:0 auto;">
+		<div class="panel panel-info">
+			<div class="panel-heading">First Name</div>
+			<div class="panel-body" id="firstName"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">last Name</div>
+			<div class="panel-body" id="lastName"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Email</div>
+			<div class="panel-body" id="email"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Create Date</div>
+			<div class="panel-body" id="createDate"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Last Update</div>
+			<div class="panel-body" id="lastUpdate"></div>
+		</div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Address
+        </a>
+        <button class="btn btn-default" onclick="editAddress()" style="position:relative;right:40px;bottom:5px;float:right;"><i class="glyphicon glyphicon-pencil"></i></button>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body" style="width:90%;margin:0 auto;">
+      	<div class="panel panel-info">
+			<div class="panel-heading">Country</div>
+			<div class="panel-body" id="country"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">City</div>
+			<div class="panel-body" id="city"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Address</div>
+			<div class="panel-body" id="address"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Address2</div>
+			<div class="panel-body" id="address2"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">District</div>
+			<div class="panel-body" id="district"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Phone</div>
+			<div class="panel-body" id="phone"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Postal Code</div>
+			<div class="panel-body" id="postalCode"></div>
+		</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Last Update</div>
+			<div class="panel-body" id="lastUpdateAddr"></div>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 模态框basicInfo -->
+<div class="modal fade" id="editBasicInfoModal" tabindex="-1" role="dialog" aria-labelledby="editBasicModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title" id="editBasicModalLabel">Edit Basic Information</h4>
+			</div>
+			<div class="modal-body">
+				<form id="formEditBasic" role="form">
+					<div class="form-group ">
+						<label for="inputFirstName">First Name</label>
+						<input name="firstName" type="text" class="form-control" id="inputFirstName" placeholder="Enter first Name">
+						<div id="errorFirstName" class="alert alert-danger shake animated" role="alert" style="display:none;height:40px;">Enter your first name</div>
+					</div>
+					<div class="form-group">
+						<label for="inputLastName">Last Name</label>
+						<input name="lastName" type="text" id="inputLastName" rows="3" class="form-control" placeholder="Enter last Name" />
+						<div id="errorLastName" class="alert alert-danger shake animated" role="alert" style="display:none;height:40px;">Enter your last name</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEmail">Email</label>
+						<input name="email" type="text" id="inputEmail" rows="3" class="form-control" placeholder="Enter e-mail" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick="saveBasicChange()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 模态框address -->
+<div class="modal fade" id="editAddressModal" tabindex="-1" role="dialog" aria-labelledby="editAddressModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="editAddressModalLabel">Edit Address</h4>
+            </div>
+            <div class="modal-body">
+                <form id="formEditAddress" role="form"><input type="hidden" name="addressId" id="addressId">
+                    <div class="form-group">
+                        <label for="selectCountry">Country</label>
+	                    <select name="country" id="selectCountry" class="form-control">
+	                    
+	                    </select>
+                    </div>
+                    <div class="form-group">
+	                    <label for="selectCity">City</label>
+	                    <select name="cityId" id="selectCity" class="form-control">
+	                    
+	                    </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputAddress">Address</label>
+                        <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Enter Address">
+                        <div id="errorAddress" class="alert alert-danger shake animated" role="alert" style="display:none;height:40px;">Enter your address</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Address2</label>
+                        <input name="address2" type="text" id="inputAddress2" rows="3" class="form-control" placeholder="Enter address2" />
+                        <div id="errorAddress2" class="alert alert-danger shake animated" role="alert" style="display:none;height:40px;">Enter your address2</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDistrict">District</label>
+                        <input name="district" type="text" id="inputDistrict" rows="3" class="form-control" placeholder="Enter district" />
+                        <div id="errorDistrict" class="alert alert-danger shake animated" role="alert" style="display:none;height:40px;">Enter your district</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">Phone</label>
+                        <input name="phone" type="text" id="inputPhone" rows="3" class="form-control" placeholder="Enter phone" />
+                        <div id="errorPhone" class="alert alert-danger shake animated" role="alert" style="display:none;height:40px;">Enter your phone</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPostalCode">Postal Code</label>
+                        <input name="postalCode" type="text" id="inputPostalCode" rows="3" class="form-control" placeholder="Enter postal code" />
+                        <div id="errorPostalCode" class="alert alert-danger shake animated" role="alert" style="display:none;height:40px;">Enter your postal code</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveAddressChange()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.hDialog.min.js"></script>
+<script type="text/javascript" src="assets/js/profile.js"></script>
+</html>
