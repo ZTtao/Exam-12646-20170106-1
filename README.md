@@ -3,3 +3,5 @@
 密码：root123
 #jetty命令
 mvn jetty:run
+#url
+http://localhost:8080/
