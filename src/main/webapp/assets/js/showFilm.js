@@ -72,8 +72,7 @@ $(function(){
 			sortable:'true'
 		},{
 			field:'language.name',
-			title:'Language',
-			sortable:'true'
+			title:'Language'
 		},{
 			formatter:'operateFormatter',
 			title:'Operate',
