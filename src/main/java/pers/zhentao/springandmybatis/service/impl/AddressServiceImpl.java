@@ -11,7 +11,6 @@ import pers.zhentao.springandmybatis.dao.CityMapper;
 import pers.zhentao.springandmybatis.dao.CountryMapper;
 import pers.zhentao.springandmybatis.pojo.Address;
 import pers.zhentao.springandmybatis.pojo.City;
-import pers.zhentao.springandmybatis.pojo.CityExample;
 import pers.zhentao.springandmybatis.pojo.Country;
 import pers.zhentao.springandmybatis.service.IAddressService;
 
@@ -28,7 +27,7 @@ public class AddressServiceImpl implements IAddressService{
 	@Override
 	public List<Country> getCountry() throws Exception {
 		try{
-			return countryMapper.selectByExample(null);
+			return countryMapper.selectAllCountry();
 		}catch(Exception e){
 			throw e;
 		}
@@ -37,9 +36,7 @@ public class AddressServiceImpl implements IAddressService{
 	@Override
 	public List<City> getCityByCountryId(int countryId) throws Exception {
 		try{
-			CityExample example = new CityExample();
-			example.or().andCountryIdEqualTo(Short.valueOf(countryId+""));
-			return cityMapper.selectByExample(example);
+			return cityMapper.selectCityByCountryId(countryId);
 		}catch(Exception e){
 			throw e;
 		}

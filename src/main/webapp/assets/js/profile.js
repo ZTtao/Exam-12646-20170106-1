@@ -11,24 +11,24 @@
 				}else if(data == 'exception'){
 					$.tooltip("出现异常");
 				}else{
-					$("#firstName").html(data['customer']['firstName']);
-					$("#lastName").html(data['customer']['lastName']);
-					$("#email").html(data['customer']['email']);
+					$("#firstName").html(data['firstName']);
+					$("#lastName").html(data['lastName']);
+					$("#email").html(data['email']);
 					var date = new Date();
-					date.setTime(parseInt(data['customer']['createDate']));
+					date.setTime(parseInt(data['createDate']['time']));
 					$("#createDate").html(date.toLocaleDateString()+" "+date.toLocaleTimeString());
-					date.setTime(parseInt(data['customer']['lastUpdate']));
+					date.setTime(parseInt(data['lastUpdate']['time']));
 					$("#lastUpdate").html(date.toLocaleDateString()+" "+date.toLocaleTimeString());
 					
 					$("#addressId").val(data['address']['addressId']);
-					$("#country").html(data['country']['country']);
-					$("#city").html(data['city']['city']);
+					$("#country").html(data['address']['city']['country']['country']);
+					$("#city").html(data['address']['city']['city']);
 					$("#address").html(data['address']['address']);
 					$("#address2").html(data['address']['address2']);
 					$("#district").html(data['address']['district']);
 					$("#phone").html(data['address']['phone']);
 					$("#postalCode").html(data['address']['postalCode']);
-					date.setTime(parseInt(data['address']['lastUpdate']));
+					date.setTime(parseInt(data['address']['lastUpdate']['time']));
 					$("#lastUpdateAddr").html(date.toLocaleDateString()+" "+date.toLocaleTimeString());
 					
 					

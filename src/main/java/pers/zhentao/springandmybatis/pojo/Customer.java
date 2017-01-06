@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class Customer {
     private Integer customerId;
-    private Byte storeId;
-    private Store store;
     private String firstName;
     private String lastName;
     private String email;
@@ -19,18 +17,6 @@ public class Customer {
 	}
 	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
-	}
-	public Byte getStoreId() {
-		return storeId;
-	}
-	public void setStoreId(Byte storeId) {
-		this.storeId = storeId;
-	}
-	public Store getStore() {
-		return store;
-	}
-	public void setStore(Store store) {
-		this.store = store;
 	}
 	public String getFirstName() {
 		return firstName;

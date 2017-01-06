@@ -5,7 +5,6 @@ import java.util.Date;
 public class City {
     private Integer cityId;
     private String city;
-    private Integer countryId;
     private Country country;
     private Date lastUpdate;
 	public Integer getCityId() {
@@ -19,12 +18,6 @@ public class City {
 	}
 	public void setCity(String city) {
 		this.city = city;
-	}
-	public Integer getCountryId() {
-		return countryId;
-	}
-	public void setCountryId(Integer countryId) {
-		this.countryId = countryId;
 	}
 	public Country getCountry() {
 		return country;

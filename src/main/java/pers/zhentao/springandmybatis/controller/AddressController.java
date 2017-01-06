@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
-
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import pers.zhentao.springandmybatis.pojo.Address;
 import pers.zhentao.springandmybatis.service.IAddressService;
 
@@ -20,7 +21,7 @@ public class AddressController {
 	@ResponseBody
 	public String getCountry(){
 		try{
-			return JSON.toJSONString(addressService.getCountry());
+			return (new JSONArray().fromObject(addressService.getCountry())).toString();
 		}catch(Exception e){
 			e.printStackTrace();
 			return "exception";
@@ -31,7 +32,7 @@ public class AddressController {
 	@ResponseBody
 	public String getCity(@RequestParam(value="countryId",required=true)Integer countryId){
 		try{
-			return JSON.toJSONString(addressService.getCityByCountryId(countryId));
+			return new JSONArray().fromObject(addressService.getCityByCountryId(countryId)).toString();
 		}catch(Exception e){
 			e.printStackTrace();
 			return "exception";

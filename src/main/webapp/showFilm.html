@@ -42,7 +42,6 @@
 				<div class="form-group">
 					<label for="inputDescription">Description</label>
 					<textarea name="description" id="inputDescription" rows="3" class="form-control"></textarea>
-					<div id="errorDescription" class="alert alert-danger" role="alert" style="display:none;height:40px;">请填写Description</div>
 				</div>
 				<div class="form-group">
 					<label for="selectLanguage">Language</label>
@@ -76,11 +75,11 @@ $(function(){
 		dataType:'json',
 		success:function(data){
 			for(var key in data){
-				$("#selectLanguage").append("<option value='"+key+"'>"+data[key]+"</option>");
+				$("#selectLanguage").append("<option value='"+data[key]['languageId']+"'>"+data[key]['name']+"</option>");
 			}
 		},
 		error:function(){
-			alert("error");
+			alert("error2");
 		}
 	})
 	$("#inputTitle").blur(function(){
@@ -92,16 +91,6 @@ $(function(){
 	$("#inputTitle").focus(function(){
 		$("#errorTitle").hide();
 	})
-	$("#inputDescription").blur(function(){
-		if($("#inputDescription").val().trim() == ""){
-			$("#errorDescription").addClass("HTooltip shake animated");
-			$("#errorDescription").show();
-		}
-	});
-	$("#inputDescription").focus(function(){
-		$("#errorDescription").hide();
-	})
-	
 	$("#editDiv").on('hidden.bs.modal',function(e){
 		$("#errorTitle").hide();
 		$("#errorDescription").hide();
@@ -149,7 +138,7 @@ $(function(){
 			title:'Description',
 			sortable:'true'
 		},{
-			field:'languageName',
+			field:'language.name',
 			title:'Language',
 			sortable:'true'
 		},{
@@ -162,7 +151,7 @@ $(function(){
 		pagination:'true',	//启用分页
 		sortName:'film_id',	//默认排序字段
 		sidePagination:'server',	//服务器分页
-		pageList:[10,25,50,100,'ALL'],	//可选择的每页记录数量
+		pageList:[10,20,50],	//可选择的每页记录数量
 		showColumns:'true',
 		showRefresh:'true',
 		showToggle:'true',
@@ -174,7 +163,7 @@ $(function(){
 			$("#inputId").val(row.filmId);
 			$("#inputTitle").val(row.title);
 			$("#inputDescription").val(row.description);
-			$("#selectLanguage").val(row.languageId);
+			$("#selectLanguage").val(row.language.languageId);
 		}
 	};
 	function operateFormatter(value,row,index){

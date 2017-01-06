@@ -7,7 +7,6 @@ public class Address {
     private String address;
     private String address2;
     private String district;
-    private Integer cityId;
     private City city;
     private String postalCode;
     private String phone;
@@ -35,12 +34,6 @@ public class Address {
 	}
 	public void setDistrict(String district) {
 		this.district = district;
-	}
-	public Integer getCityId() {
-		return cityId;
-	}
-	public void setCityId(Integer cityId) {
-		this.cityId = cityId;
 	}
 	public City getCity() {
 		return city;

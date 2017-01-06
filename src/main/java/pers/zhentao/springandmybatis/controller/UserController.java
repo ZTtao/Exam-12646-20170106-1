@@ -1,10 +1,7 @@
 package pers.zhentao.springandmybatis.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.alibaba.fastjson.JSON;
-
+import net.sf.json.JSONObject;
+import pers.zhentao.springandmybatis.pojo.Customer;
 import pers.zhentao.springandmybatis.service.ICustomerService;
 
 @Controller
@@ -40,11 +37,11 @@ public class UserController {
 	@ResponseBody
 	public String getCusInfo(@SessionAttribute(value="user",required=true)String firstName){
 		try{
-			Map<String,Object> result = customerService.getCustomerInfo(firstName);
-			if(result.get("customer") == null)
+			Customer cus = customerService.getCustomerInfo(firstName);
+			if(cus == null)
 				return "null";
 			else
-				return JSON.toJSONString(result);
+				return new JSONObject().fromObject(cus).toString();
 		}catch(Exception e){
 			e.printStackTrace();
 			return "exception";
@@ -67,6 +64,7 @@ public class UserController {
 			}
 			return "faild";
 		}catch(Exception e){
+			e.printStackTrace();
 			return "exception";
 		}
 	}

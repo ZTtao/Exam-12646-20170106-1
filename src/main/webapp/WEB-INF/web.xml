@@ -26,7 +26,7 @@
     <filter-class>pers.zhentao.springandmybatis.filter.LoginFilter</filter-class>
     <init-param>
       <param-name>page</param-name>
-      <param-value>/index.html,/loginPage.html,assets/*,/checkUserName,/login,/isLogin,/welcome.html,/setInnerPath,/getInnerPath</param-value>
+      <param-value>/index.html,/login.html,assets/*,/checkUserName,/toLogin,/isLogin,/welcome.html,/setInnerPath,/getInnerPath</param-value>
     </init-param>
   </filter>
   <filter-mapping>
@@ -41,13 +41,12 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring-mybatis.xml</param-value>
   </context-param>
-  
   <servlet>
     <servlet-name>Springmvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:springmvc.xml</param-value>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
     <async-supported>true</async-supported>
@@ -59,5 +58,4 @@
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
-  
 </web-app>

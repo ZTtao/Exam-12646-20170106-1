@@ -1,22 +1,21 @@
 package pers.zhentao.springandmybatis.controller;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
-
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import pers.zhentao.springandmybatis.pojo.Film;
-import pers.zhentao.springandmybatis.pojo.FilmResult;
+import pers.zhentao.springandmybatis.pojo.Language;
 import pers.zhentao.springandmybatis.service.IFilmService;
 import pers.zhentao.springandmybatis.utils.MyStringUtil;
 
@@ -45,8 +44,10 @@ public class FilmController {
 	@ResponseBody
 	public String getLanguage(){
 		try{
-			Map<String,String> map = filmService.getAllLanguage();
-			return JSON.toJSONString(map);
+			List<Language> lan = filmService.getAllLanguage();
+			String str = JSONArray.fromObject(lan).toString();
+			System.out.println();
+			return JSONArray.fromObject(lan).toString();
 		}catch(Exception e){
 			e.printStackTrace();
 			return e.getMessage();
@@ -57,7 +58,7 @@ public class FilmController {
 	@ResponseBody
 	public String showFilms(@RequestParam(value="offset",required=false)String sOffset,@RequestParam(value="limit",required=false)String sLimit,
 			@RequestParam(value="sort",required=false)String orderBy,@RequestParam(value="order",required=false)String order,@RequestParam(value="search",required=false)String search){
-		List<FilmResult> list = new ArrayList<FilmResult>();
+		List<Film> list = new ArrayList<Film>();
 		int count = 0;
 		try{
 			if(orderBy != null){
@@ -76,7 +77,8 @@ public class FilmController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("total", count);
 		map.put("rows", list);
-		return JSON.toJSONString(map);
+		JSONObject obj = JSONObject.fromObject(map);
+		return obj.toString();
 	}
 	
 	@RequestMapping("/updateFilm")
@@ -85,10 +87,12 @@ public class FilmController {
 			@RequestParam(value="description",required=false)String description,@RequestParam(value="languageId",required=true)String sLanguageId){
 		try{
 			Film film = new Film();
-			film.setFilmId(Short.valueOf(filmId));
+			film.setFilmId(Integer.valueOf(filmId));
 			film.setTitle(title);
 			film.setDescription(description);
-			film.setLanguageId(Byte.parseByte(sLanguageId));
+			Language language = new Language();
+			language.setLanguageId(Integer.parseInt(sLanguageId));
+			film.setLanguage(language);
 			if(filmService.updateOrInsertFilm(film)){
 				return "success";
 			}else{

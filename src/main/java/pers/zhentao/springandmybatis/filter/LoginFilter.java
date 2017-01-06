@@ -1,7 +1,6 @@
 package pers.zhentao.springandmybatis.filter;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -41,7 +40,7 @@ public class LoginFilter implements Filter{
 			if(session.getAttribute("user")!=null){
 				chain.doFilter(request, response);
 			}else{
-				((HttpServletResponse)response).sendRedirect("loginPage.html");
+				((HttpServletResponse)response).sendRedirect("login.html");
 	//			request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 		}else{

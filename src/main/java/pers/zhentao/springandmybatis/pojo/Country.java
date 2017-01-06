@@ -3,13 +3,13 @@ package pers.zhentao.springandmybatis.pojo;
 import java.util.Date;
 
 public class Country {
-    private Short countryId;
+    private Integer countryId;
     private String country;
     private Date lastUpdate;
-	public Short getCountryId() {
+	public Integer getCountryId() {
 		return countryId;
 	}
-	public void setCountryId(Short countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	public String getCountry() {

@@ -22,7 +22,7 @@ function login(){
 	$("#errorTip").hide();
 	var param = $("#loginForm").serialize();
 	$.ajax({
-		url:'login',
+		url:'toLogin',
 		type:'post',
 		data:param,
 		success:function(data){
