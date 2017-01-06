@@ -1,9 +1,6 @@
 /**
  * @author 张镇涛
  */
-/**
- * @author 张镇涛
- */
 $(function(){
 	$.ajax({
 		url:'isLogin',
