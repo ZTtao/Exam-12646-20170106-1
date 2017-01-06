@@ -1,3 +1,6 @@
+/**
+ * @author 张镇涛
+ */
 function checkUserName(){
 	userName = $("#username").val();
 	$.ajax({

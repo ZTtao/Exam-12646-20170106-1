@@ -1,4 +1,7 @@
-	$(function(){
+/**
+ * @author 张镇涛
+ */
+$(function(){
 		$.showLoading("数据加载中...");
 		$.ajax({
 			url:'getCusInfo',

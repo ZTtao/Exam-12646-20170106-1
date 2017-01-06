@@ -12,20 +12,5 @@ Welcome,&nbsp;&nbsp;<a href="loginPage.html" target="_parent" class="btn btn-def
 </h1>
 </body>
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(function(){
-    $.ajax({
-        url:'isLogin',
-        dataType:'json',
-        success:function(data){
-            if(data['result'] == "true"){
-            	$("#h1").html('Welcome,&nbsp;&nbsp;'+data['userName']);
-            }
-        },
-        error:function(){
-            
-        }
-    });
-})
-</script>
+<script src="assets/js/welcome.js"></script>
 </html>
